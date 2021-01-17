@@ -6,7 +6,7 @@ const initParams = {
     TableName: process.env.SAMPLE_TABLE_NAME,
 };
 
-function getSampleById(id) {
+const getSampleById = (id) => {
     const params = {
         ...initParams,
         Key: {
@@ -16,7 +16,7 @@ function getSampleById(id) {
 
     return new Promise((resolve, reject) => {
         db.get(params, (err, data) => {
-            if (err || typeof data.Item === 'undefined') {
+            if (err || data.Item === undefined) {
                 return reject(ErrorService.NotFoundError());
             }
 
@@ -25,7 +25,7 @@ function getSampleById(id) {
     });
 }
 
-function createSample(name) {
+const createSample = (name) => {
     const params = {
         ...initParams,
         Item: {

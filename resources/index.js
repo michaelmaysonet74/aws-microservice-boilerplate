@@ -4,7 +4,7 @@ const resources = {
 
 let transformedResources = {};
 
-if (typeof process.env.API_BASE_URL !== 'undefined') {
+if (process.env.API_BASE_URL !== undefined) {
     for (let key in resources) {
         transformedResources[
             `${process.env.API_BASE_URL}${key}`
