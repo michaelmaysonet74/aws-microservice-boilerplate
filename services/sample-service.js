@@ -1,7 +1,7 @@
 const AWS = require('aws-sdk');
-const db = new AWS.DynamoDB.DocumentClient();
 const ErrorService = require('./error-service');
 
+const db = new AWS.DynamoDB.DocumentClient();
 const initParams = {
     TableName: process.env.SAMPLE_TABLE_NAME,
 };
@@ -23,7 +23,7 @@ const getSampleById = (id) => {
             return resolve(data.Item);
         });
     });
-}
+};
 
 const createSample = (name) => {
     const params = {
@@ -42,7 +42,7 @@ const createSample = (name) => {
             return resolve(data.Attributes);
         });
     });
-}
+};
 
 module.exports = {
     getSampleById,

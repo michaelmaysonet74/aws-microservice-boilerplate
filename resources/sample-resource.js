@@ -22,9 +22,9 @@ const GET = async (event) => {
             'Access-Control-Allow-Origin': process.env.ACCESS_CONTROL_ALLOW_ORIGIN,
         },
     };
-}
+};
 
-const POST = (event) => {
+const POST = async (event) => {
     if (!event || !event.body) {
         throw ErrorService.InvalidRequestError();
     }
@@ -51,7 +51,7 @@ const POST = (event) => {
             'Access-Control-Allow-Origin': process.env.ACCESS_CONTROL_ALLOW_ORIGIN,
         },
     };
-}
+};
 
 module.exports = {
     '/sample/{id}': {

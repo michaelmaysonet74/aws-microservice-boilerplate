@@ -1,6 +1,6 @@
 const ErrorService = require('./error-service');
 
-async function validateModel(model, payload) {
+const validateModel = async (model, payload) => {
     const requiredFields = [];
 
     for (let field in model) {
@@ -12,7 +12,7 @@ async function validateModel(model, payload) {
     if (requiredFields.length > 0) {
         throw ErrorService.InvalidRequestError(undefined, requiredFields);
     }
-}
+};
 
 module.exports = {
     validateModel,
