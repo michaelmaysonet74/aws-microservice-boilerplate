@@ -1,9 +1,7 @@
 const resources = require('./resources');
 const ErrorService = require('./services/error-service');
 
-exports.handler = async (event) => {
-    const { resource, httpMethod } = event;
-
+exports.handler = async ({ resource, httpMethod }) => {
     if (resources[resource] === undefined) {
         throw ErrorService.NotFoundError();
     }
