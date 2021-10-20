@@ -1,5 +1,5 @@
 module.exports = {
-    'name': {
+    name: {
         required: true,
     },
 };
