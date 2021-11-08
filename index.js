@@ -1,14 +1,16 @@
-const resources = require('./resources');
-const ErrorService = require('./services/error-service');
+const resources = require("./resources");
+const ErrorService = require("./services/error-service");
 
-exports.handler = async ({ resource, httpMethod }) => {
-    if (resources[resource] === undefined) {
-        throw ErrorService.NotFoundError();
-    }
+exports.handler = async (event) => {
+  const { resource, httpMethod } = event;
 
-    if (resources[resource][httpMethod] === undefined) {
-        throw ErrorService.MethodNotAllowedError();
-    }
+  if (resources[resource] === undefined) {
+    throw ErrorService.NotFoundError();
+  }
 
-    return resources[resource][httpMethod](event);
+  if (resources[resource][httpMethod] === undefined) {
+    throw ErrorService.MethodNotAllowedError();
+  }
+
+  return resources[resource][httpMethod](event);
 };
