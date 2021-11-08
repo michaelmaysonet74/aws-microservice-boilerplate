@@ -1,18 +1,14 @@
 const resources = {
-    ...require('./sample-resource.js/index.js'),
+  ...require("./sample-resource.js/index.js"),
 };
 
-let transformedResources = {};
-
-if (process.env.API_BASE_URL !== undefined) {
-    for (let key in resources) {
-        transformedResources[
-            `${process.env.API_BASE_URL}${key}`
-        ] = resources[key];
-    }
-}
-else {
-    transformedResources = { ...resources };
-}
-
-module.exports = transformedResources;
+module.exports =
+  process.env.API_BASE_URL !== undefined
+    ? Object.keys(resources).reduce(
+        (acc, key) => ({
+          ...acc,
+          [`${process.env.API_BASE_URL}${key}`]: resources[key],
+        }),
+        {}
+      )
+    : resources;
