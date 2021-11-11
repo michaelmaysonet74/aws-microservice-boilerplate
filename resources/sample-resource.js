@@ -30,8 +30,8 @@ const POST = async (event) => {
 
   const body = JSON.parse(event.body);
 
-  await ValidationService.validateModel(
-    require("../models/sample-model"),
+  await ValidationService.validateSchema(
+    require("../schemas/sample-schema"),
     body
   );
 

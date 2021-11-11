@@ -1,10 +1,10 @@
 const ErrorService = require("./error-service");
 
-const validateModel = async (model, payload) => {
+const validateSchema = async (schema, payload) => {
   const requiredFields = [];
 
-  for (let field in model) {
-    if (model[field].required && payload[field] === undefined) {
+  for (let field in schema) {
+    if (schema[field].required && payload[field] === undefined) {
       requiredFields.push(field);
     }
   }
@@ -15,5 +15,5 @@ const validateModel = async (model, payload) => {
 };
 
 module.exports = {
-  validateModel,
+  validateSchema,
 };
